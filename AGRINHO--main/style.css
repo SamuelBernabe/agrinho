@@ -1,0 +1,286 @@
+/* Rolagem suave ao clicar nos links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Definição de variáveis CSS para cores */
+:root {
+    --primary-green: #2E8B57; /* Verde esmeralda escuro */
+    --accent-blue: #1E90FF;   /* Azul para destaque */
+    --text-dark: #333333;
+    --text-light: #ffffff;
+    --background-light: #f4f4f4; /* Fundo geral do site */
+    --card-background: #C8F0C8; /* Verde bem clarinho para o fundo dos cards */
+    --border-color: #e0e0e0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif; /* Fonte para o corpo do texto */
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-light); /* Cor de fundo suave */
+    color: var(--text-dark);
+    line-height: 1.6; /* Espaçamento entre linhas para melhor leitura */
+}
+
+/* Estilo do Cabeçalho */
+header {
+    background-color: var(--primary-green); /* Cor do cabeçalho */
+    color: var(--text-light);
+    padding: 1.5rem 0; /* Padding vertical, lateral 0 pois o conteúdo terá centralização */
+    text-align: center; /* Centraliza o texto, mas não os flex items diretamente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    
+    /* Configurações Flexbox para o HEADER: empilha o título/imagens acima dos botões */
+    display: flex;
+    flex-direction: column; /* Coloca os filhos (contêiner de título e contêiner de botões) em coluna */
+    align-items: center; /* Centraliza horizontalmente os filhos */
+    justify-content: center;
+}
+
+/* Contêiner para o TÍTULO e as IMAGENS - Este fará com que fiquem LADO A LADO */
+.header-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px; /* Mantém o espaço entre o contêiner e os botões */
+    
+    /* --- Adicione ou modifique estas linhas para a linha separadora --- */
+    border-bottom: 5px solid var(--text-light); /* Linha branca */
+    padding-bottom: 15px; /* Espaço entre o título e a linha */
+}
+
+header h1 {
+    font-family: 'Montserrat', sans-serif; /* Fonte para o título principal */
+    font-size: 2.8rem; /* Tamanho do título */
+    margin: 0; /* Remove margem padrão que pode interferir no flexbox */
+    letter-spacing: 1.5px; /* Espaçamento entre letras */
+    text-wrap: balance; /* Tenta equilibrar o texto do título em várias linhas */
+    line-height: 1.2; /* Ajuste para o espaçamento da linha do título */
+}
+
+/* Estilo das imagens no cabeçalho */
+.header-image-left,
+.header-image-right {
+    width: 80px; /* Tamanho das imagens */
+    height: auto;
+    flex-shrink: 0; /* Evita que a imagem encolha demais */
+}
+
+.header-image-left img,
+.header-image-right img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Estilo do contêiner dos botões no cabeçalho */
+.header-buttons {
+    display: flex; /* Usa flexbox para alinhar os botões */
+    justify-content: center; /* Centraliza os botões horizontalmente */
+    flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha em telas menores */
+    gap: 15px; /* Espaço entre os botões */
+    margin-top: 0; /* Margem já controlada pelo .header-title-container margin-bottom */
+    padding: 0 10px; /* Um pouco de padding nas laterais */
+    width: 100%; /* Garante que os botões ocupem a largura total */
+}
+
+/* Estilo dos botões de navegação */
+.nav-button {
+    background-color: var(--accent-blue); /* Cor de destaque para os botões */
+    color: var(--text-light); /* Cor do texto do botão */
+    padding: 12px 25px; /* Preenchimento interno do botão */
+    border-radius: 8px; /* Cantos arredondados do botão */
+    text-decoration: none; /* Remove sublinhado do link */
+    font-weight: 600; /* Texto em negrito */
+    font-size: 1.05rem; /* Tamanho da fonte */
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transição suave ao passar o mouse */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    white-space: nowrap; /* Evita que o texto do botão quebre em várias linhas */
+}
+
+.nav-button:hover {
+    background-color: #1a78d0; /* Cor mais escura ao passar o mouse */
+    transform: translateY(-2px); /* Efeito de "levantar" */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
+}
+
+/* Estilo do Conteúdo Principal */
+main {
+    padding: 30px 0;
+    max-width: 1050px;
+    margin: 30px auto;
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* Estilo das Seções de Conteúdo - SEUS "CARDS" */
+section.body {
+    margin-bottom: 30px;
+    padding: 35px;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border-color);
+}
+
+section.body:last-child {
+    margin-bottom: 0;
+}
+
+/* Estilo dos Títulos de Seção */
+.title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.2rem;
+    color: var(--primary-green);
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+/* Estilo do Texto */
+p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+p b {
+    color: var(--primary-green);
+}
+
+/* Estilo do Texto Importante */
+.texto-importante {
+    font-family: 'Montserrat', sans-serif;
+    color: #b00020;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 30px;
+    margin: 40px auto;
+}
+
+/* Estilo da Galeria de Imagens (Lado a Lado) */
+.galeria-imagens {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    padding: 0 10px;
+}
+
+.galeria-imagens figure {
+    flex: 1 1 calc(25% - 30px);
+    min-width: 200px;
+    max-width: 280px;
+    margin: 0;
+    text-align: center;
+    padding-bottom: 15px;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.galeria-imagens figure:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.galeria-imagens img {
+    border-radius: 12px 12px 0 0;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.galeria-imagens figcaption {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.95rem;
+    color: #666;
+    margin-top: 15px;
+    font-style: italic;
+    padding: 0 10px;
+}
+
+/* Estilo do Rodapé */
+footer {
+    background-color: #1A1A1A;
+    color: #BBBBBB;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.9rem;
+    margin-top: 50px;
+    border-radius: 12px; /* Cantos arredondados */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    /* No cabeçalho, as imagens e o título se empilham */
+    .header-title-container {
+        flex-direction: column; /* Empilha as imagens e o título em telas menores */
+        gap: 10px;
+    }
+    .header-image-left,
+    .header-image-right {
+        width: 60px; /* Reduz o tamanho das imagens em telas menores */
+    }
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    .texto-importante {
+        font-size: 1.2rem;
+        padding: 20px;
+    }
+
+    .galeria-imagens figure {
+        flex: 1 1 calc(48% - 20px); /* 2 imagens por linha em telas médias */
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    main {
+        padding: 1.5rem 1rem;
+        margin: 20px auto;
+    }
+
+    .galeria-imagens {
+        gap: 20px;
+    }
+
+    .galeria-imagens figure {
+        flex: 1 1 90%; /* 1 imagem por linha em telas muito pequenas */
+        max-width: 350px; /* Limita a largura em telas muito pequenas */
+    }
+
+    /* Reduz o tamanho das imagens ainda mais em telas muito pequenas */
+    .header-image-left,
+    .header-image-right {
+        width: 50px; 
+    }
+}
